@@ -13,3 +13,8 @@ require (
 	github.com/lib/pq v1.10.9
 	github.com/mattn/go-sqlite3 v1.14.24
 )
+
+require (
+	github.com/aws/aws-sdk-go-v2 v1.32.7 // indirect
+	github.com/jmespath/go-jmespath v0.4.0 // indirect
+)
