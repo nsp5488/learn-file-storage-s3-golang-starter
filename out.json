@@ -1,0 +1,140 @@
+[?25l[?2004h╭──────────────────────────────────────────────────────────────╮
+│ ⣽  Running: aws cloudfront list-distributions --no-cli-pager │
+╰┬─────────────────────────────────────────────────────────────╯
+ ├─  ⣽  Expect stdout to contain all of:
+ │       - '"Status": "Deployed"'       
+ │       - 'cloudfront.net'             
+ │       - 's3'                         
+
+[0D[1A[1A[1A[1A[1A[2K[1A[1A[2K[1A[0D[2K╭──────────────────────────────────────────────────────────────╮
+│ ⣻  Running: aws cloudfront list-distributions --no-cli-pager │
+[1B ├─  ⣻  Expect stdout to contain all of:
+[1B[1B[1B[1B[0D[1A[1A[1A[1A[1A[2K[1A[1A[2K[1A[0D[2K╭──────────────────────────────────────────────────────────────╮
+│ ⢿  Running: aws cloudfront list-distributions --no-cli-pager │
+[1B ├─  ⢿  Expect stdout to contain all of:
+[1B[1B[1B[1B[0D[1A[1A[1A[1A[1A[2K[1A[1A[2K[1A[0D[2K╭──────────────────────────────────────────────────────────────╮
+│ ⡿  Running: aws cloudfront list-distributions --no-cli-pager │
+[1B ├─  ⡿  Expect stdout to contain all of:
+[1B[1B[1B[1B[0D[1A[1A[1A[1A[1A[2K[1A[1A[2K[1A[0D[2K╭──────────────────────────────────────────────────────────────╮
+│ ⣟  Running: aws cloudfront list-distributions --no-cli-pager │
+[1B ├─  ⣟  Expect stdout to contain all of:
+[1B[1B[1B[1B[0D[1A[1A[1A[1A[1A[2K[1A[2K[1A[2K[1A[0D[2K╭───────────────────────────────────────────────────────────╮
+│ Running: aws cloudfront list-distributions --no-cli-pager │
+╰┬──────────────────────────────────────────────────────────╯
+ ├─  ?  Expect stdout to contain all of:
+[1B[1B[1B[1B[0D[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[0D[2K [0D[2K[?2004l[?25h[?1002l[?1003l[?1006l╭───────────────────────────────────────────────────────────╮
+│ Running: aws cloudfront list-distributions --no-cli-pager │
+╰┬──────────────────────────────────────────────────────────╯
+ ├─  ?  Expect stdout to contain all of:
+ │       - '"Status": "Deployed"'       
+ │       - 'cloudfront.net'             
+ │       - 's3'                         
+
+ > Command stdout:
+
+{
+    "DistributionList": {
+        "Items": [
+            {
+                "Id": "E38RQAVTU4EXDK",
+                "ARN": "arn:aws:cloudfront::864981753918:distribution/E38RQAVTU4EXDK",
+                "Status": "InProgress",
+                "LastModifiedTime": "2024-12-29T14:37:02.108000+00:00",
+                "DomainName": "d3rfwq1gljv4jd.cloudfront.net",
+                "Aliases": {
+                    "Quantity": 0
+                },
+                "Origins": {
+                    "Quantity": 1,
+                    "Items": [
+                        {
+                            "Id": "tubely-private-92117.s3.us-east-2.amazonaws.com",
+                            "DomainName": "tubely-private-92117.s3.us-east-2.amazonaws.com",
+                            "OriginPath": "",
+                            "CustomHeaders": {
+                                "Quantity": 0
+                            },
+                            "S3OriginConfig": {
+                                "OriginAccessIdentity": ""
+                            },
+                            "ConnectionAttempts": 3,
+                            "ConnectionTimeout": 10,
+                            "OriginShield": {
+                                "Enabled": false
+                            },
+                            "OriginAccessControlId": "E1OFEGAAEWAKYD"
+                        }
+                    ]
+                },
+                "OriginGroups": {
+                    "Quantity": 0
+                },
+                "DefaultCacheBehavior": {
+                    "TargetOriginId": "tubely-private-92117.s3.us-east-2.amazonaws.com",
+                    "TrustedSigners": {
+                        "Enabled": false,
+                        "Quantity": 0
+                    },
+                    "TrustedKeyGroups": {
+                        "Enabled": false,
+                        "Quantity": 0
+                    },
+                    "ViewerProtocolPolicy": "https-only",
+                    "AllowedMethods": {
+                        "Quantity": 3,
+                        "Items": [
+                            "HEAD",
+                            "GET",
+                            "OPTIONS"
+                        ],
+                        "CachedMethods": {
+                            "Quantity": 2,
+                            "Items": [
+                                "HEAD",
+                                "GET"
+                            ]
+                        }
+                    },
+                    "SmoothStreaming": false,
+                    "Compress": true,
+                    "LambdaFunctionAssociations": {
+                        "Quantity": 0
+                    },
+                    "FunctionAssociations": {
+                        "Quantity": 0
+                    },
+                    "FieldLevelEncryptionId": "",
+                    "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
+                    "GrpcConfig": {
+                        "Enabled": false
+                    }
+                },
+                "CacheBehaviors": {
+                    "Quantity": 0
+                },
+                "CustomErrorResponses": {
+                    "Quantity": 0
+                },
+                "Comment": "",
+                "PriceClass": "PriceClass_All",
+                "Enabled": true,
+                "ViewerCertificate": {
+                    "CloudFrontDefaultCertificate": true,
+                    "SSLSupportMethod": "vip",
+                    "MinimumProtocolVersion": "TLSv1",
+                    "CertificateSource": "cloudfront"
+                },
+                "Restrictions": {
+                    "GeoRestriction": {
+                        "RestrictionType": "none",
+                        "Quantity": 0
+                    }
+                },
+                "WebACLId": "",
+                "HttpVersion": "HTTP2",
+                "IsIPV6Enabled": true,
+                "Staging": false
+            }
+        ]
+    }
+}

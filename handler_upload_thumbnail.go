@@ -42,6 +42,7 @@ func (cfg *apiConfig) handlerUploadThumbnail(w http.ResponseWriter, r *http.Requ
 	file, header, err := r.FormFile("thumbnail")
 	if err != nil {
 		respondWithError(w, http.StatusBadRequest, "Unable to parse form file", err)
+		return
 	}
 	defer file.Close()
 
@@ -49,12 +50,14 @@ func (cfg *apiConfig) handlerUploadThumbnail(w http.ResponseWriter, r *http.Requ
 	headerFile, err := header.Open()
 	if err != nil {
 		respondWithError(w, http.StatusBadRequest, "Unable to parse header", err)
+		return
 	}
 	defer headerFile.Close()
 
 	headerData, err := io.ReadAll(headerFile)
 	if err != nil {
 		respondWithError(w, http.StatusBadRequest, "Unable to parse header", err)
+		return
 	}
 	contentType := http.DetectContentType(headerData)
 
@@ -62,6 +65,7 @@ func (cfg *apiConfig) handlerUploadThumbnail(w http.ResponseWriter, r *http.Requ
 
 	if mediaType != "image/jpeg" && mediaType != "image/png" {
 		respondWithError(w, http.StatusBadRequest, "Unable to process file", err)
+		return
 	}
 	contentTypes := strings.Split(mediaType, "/")
 
@@ -72,6 +76,7 @@ func (cfg *apiConfig) handlerUploadThumbnail(w http.ResponseWriter, r *http.Requ
 	outFile, err := os.Create(filepath.Join(cfg.assetsRoot, fileName) + "." + contentTypes[1])
 	if err != nil {
 		respondWithError(w, http.StatusInternalServerError, "Unable to save thumbnail", err)
+		return
 	}
 	defer outFile.Close()
 	io.Copy(outFile, file)
@@ -82,6 +87,7 @@ func (cfg *apiConfig) handlerUploadThumbnail(w http.ResponseWriter, r *http.Requ
 	err = cfg.db.UpdateVideo(videoData)
 	if err != nil {
 		respondWithError(w, http.StatusInternalServerError, "Unable to update video", err)
+		return
 	}
 	respondWithJSON(w, http.StatusOK, videoData)
 }
